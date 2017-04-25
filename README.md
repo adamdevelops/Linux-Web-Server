@@ -8,7 +8,7 @@ Setup a Linux server to serve the Item-Catalog application we created earlier in
 
 ### Get your server up and running
 1. Create a Lightsail server instance of Ubuntu on Amazon Lightsail.
-2. Within Lightsail in the account page, download the private key and place it directory named '.ssh' (If you do not have the folder located in your "C:\Users \ <username> \ .ssh", then create the folder with that name)
+2. Within Lightsail in the account page, download the private key and place it directory named '.ssh' (If you do not have the folder located in your "C:\Users \ username \ .ssh", then create the folder with that name)
 
 ### Secure your server
 
