@@ -12,7 +12,9 @@ Setup a Linux server to serve the Item-Catalog application we created earlier in
 <br>`cd  ~/.ssh
 mv ~/Downloads/LightsailDefaultPrivateKey.pem ~/.ssh`
 3. Then run the following command to SSH into your LightSail VM
-```ssh ubuntu@52.71.200.120 -i LightsailDefaultPrivateKey.pem```
+```
+ssh ubuntu@52.71.200.120 -i LightsailDefaultPrivateKey.pem
+```
 
 
 ### Secure your server
