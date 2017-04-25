@@ -17,7 +17,7 @@ mv ~/Downloads/LightsailDefaultPrivateKey.pem ~/.ssh`
 
 ### Secure your server
 
-### Changing timezone to UTC
+#### Changing timezone to UTC
 <a href="http://stackoverflow.com/questions/22853026/ubuntu-change-timezone-to-utc-does-not-affect-the-time-of-syslog">Source</a>
 1. Type in the following command:
 `sudo dkpg-reconfigure tzdata`
