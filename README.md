@@ -37,52 +37,52 @@ Configuring the Lightsail firewall
 Configuring the Uncomplicated Firewall (UFW)
 These are the folowing commands that you will enter to configure the UFW within your linux web server instance.
 1. Deny by default all the incoming connections
-`
+<br>`
 sudo ufw default deny incoming
 `
 2. Allow by default any outgoing connections
-`
+<br>`
 sudo ufw default allow outgoing
 `
 3. Allow SSH connections through the UFW
-`
+<br>`
 sudo ufw allow ssh
 `
 4. Allow TCP connections via port 2200 through the UFW
-`
+<br>`
 sudo ufw allow 2200/tcp
 `
 5. Allow HTTP connections through the UFW
-`
+<br>`
 sudo ufw allow www
 `
 6. Allow SSH connections through the UFW
-`
+<br>`
 sudo ufw enable
 `
 7. Now the firewall with the added rules should be enabled, we can view our changes with the following command:
-`
+<br>`
 sudo ufw status
 `
 
 #### Giving grader account access to webserver
 1. Create a new uer account called 'grader'. Provide the account an password when prompted and fill out the user information such as Full name (not necessary to fill out any of the other fields).
-`
+<br>`
 sudo adduser grader
 `
 2. Give the grader account sudo access. This is accomplished by copying the sudoers rules for the root account for the grader account and editting the rules to apply for sudo access for the grader account
 ```
-sudo cp /etc/sudoers.d/90-cloud-init-users /etc/sudoers.d/grader
+$ sudo cp /etc/sudoers.d/90-cloud-init-users /etc/sudoers.d/grader
 Note: This is the account with sudo access may vary for you.
 
-sudo nano /etc/sudoers.d/grader
+$ sudo nano /etc/sudoers.d/grader
 
 Within nano, replace the user name that is there with grader
 ```
 
 3. On your local machine, run this command through Git Bash to generate public/private ssh key pair. You will be prompted to a file to save the key (I went with the default route as displayed in the prompt's parentheses).
-`
-ssh-keygen
+<br>`
+$ ssh-keygen
 `
 4. After the ssh key has been made, we place the contents in the public SSH key into a directory on our server in a directory called authorized_keys.
 ```
@@ -113,11 +113,11 @@ ssh grader@54.236.202.30 -i ~/.ssh/id_rsa -p 2200
                              private key
 ```
 5. We will now configure our server to force key based authentication to login into the server and to only listen on port 2200 for login.
-`
+<br>`
 sudo nano /etc/ssh/sshd_config
-
-Search for the line 'Password Authentication' and change 'yes' to 'no' to force key based authentication. At the beginning of this file under the text for ports we listen for, comment out 'Port 22' and type in 'Port 2200' under it to allow only port listening for port 2200.
 `
+Search for the line 'Password Authentication' and change 'yes' to 'no' to force key based authentication. At the beginning of this file under the text for ports we listen for, comment out 'Port 22' and type in 'Port 2200' under it to allow only port listening for port 2200.
+
 #### Prepping project for deployment
 Changing timezone to UTC
 <a href="http://stackoverflow.com/questions/22853026/ubuntu-change-timezone-to-utc-does-not-affect-the-time-of-syslog">Source</a>
@@ -126,35 +126,35 @@ Changing timezone to UTC
 2. A GUI should appear asking you to select a geographic area, select 'None of the above'.
 3. You should another dialog asking to select a city/region corresponding to your time-zone. Scroll down the list until you see 'UTC' and press OK.
 
-Installing and configuring Apache to serve a Python mod_wsgi application
+#### Installing and configuring Apache to serve a Python mod_wsgi application
 1. Install Apache.
-`
+<br>`
 sudo apt-get install apache2
 `
 2. Install the Apache mod_wsgi package
-`
+<br>`
 sudo apt-get install libapache2-mod-wsgi
 `
 
-Installing and configuring PostgreSQL
+#### Installing and configuring PostgreSQL
 1.Install PostgreSQL:
-`
+<br>`
 sudo apt-get install postgresql postgresql-contrib
 `
 2. Verify if remote connections are disabled by default in the pg_hba.conf within the lines pertaining to the only allowed connections from the local host addresses 127.0.0.1 for IPv4 and ::1 for IPv6.
-`
+<br>`
 sudo nano /etc/postgresql/9.3/main/pg_hba.conf
 `
 3. Create a PostgreSQL user called 'catalog'
-`
+<br>`
 sudo -u postgres createuser -P catalog
 `
 4. Create an empty database called 'catalog' with the owner of user 'catalog' 
-`
+<br>`
 sudo -u postgres createdb -O catalog catalog
 `
 
-Installing Flask, SQLAlchemy, etc
+#### Installing Flask, SQLAlchemy, etc
 1. Install the Flask, SQLAlchemy, and any other packages used in your Catalog project
 ```
 sudo apt-get install python-psycopg2 python-flask
@@ -165,13 +165,13 @@ sudo pip install httplib2
 sudo pip install flask-seasurf
 ```
 
-Installing Git
+#### Installing Git
 1. Install Git
 `
 sudo apt-get install git
 `
 
-Clone the repository for the Item Catalog Project
+#### Clone the repository for the Item Catalog Project
 1. Create a directory in which to clone your Item Catalog project to from your GitHub.
 ```
 cd /var/www/
@@ -179,7 +179,7 @@ sudo mkdir /catalog
 git clone https://github.com/adamdevelops/Item-Catalog---DVD-Catalog.git
 ```
 
-Create the catalog.wsgi file for the project
+#### Create the catalog.wsgi file for the project
 1. Create a 'catalog.wsgi' file with in your project folder with the following (the system path will be where you stored your project, and the application secret key will be what you set it to):
 '''
 import sys
@@ -191,7 +191,7 @@ from catalog import app as application
 application.secret_key = 'my secret key'  # This needs to be changed, used as an example
 '''
 
-Configure Apache2 to serve the app
+#### Configure Apache2 to serve the app
 1. Create a virtual host configuration file in the '\etc\apache2\sites-available' directory in order to serve the catalog app using Apache web server. Here is the content of the file:
 ```
 <VirtualHost *:80>
