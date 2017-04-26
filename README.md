@@ -113,11 +113,11 @@ ssh grader@54.236.202.30 -i ~/.ssh/id_rsa -p 2200
                              private key
 ```
 5. We will now configure our server to force key based authentication to login into the server and to only listen on port 2200 for login.
-<br>`
-sudo nano /etc/ssh/sshd_config
-`
-Search for the line 'Password Authentication' and change 'yes' to 'no' to force key based authentication. At the beginning of this file under the text for ports we listen for, comment out 'Port 22' and type in 'Port 2200' under it to allow only port listening for port 2200.
+```
+$ sudo nano /etc/ssh/sshd_config
 
+Search for the line 'Password Authentication' and change 'yes' to 'no' to force key based authentication. At the beginning of this file under the text for ports we listen for, comment out 'Port 22' and type in 'Port 2200' under it to allow only port listening for port 2200.
+```
 #### Prepping project for deployment
 Changing timezone to UTC
 <a href="http://stackoverflow.com/questions/22853026/ubuntu-change-timezone-to-utc-does-not-affect-the-time-of-syslog">Source</a>
@@ -140,19 +140,19 @@ sudo apt-get install libapache2-mod-wsgi
 1.Install PostgreSQL:
 <br>`
 sudo apt-get install postgresql postgresql-contrib
-`
+`<br>
 2. Verify if remote connections are disabled by default in the pg_hba.conf within the lines pertaining to the only allowed connections from the local host addresses 127.0.0.1 for IPv4 and ::1 for IPv6.
 <br>`
 sudo nano /etc/postgresql/9.3/main/pg_hba.conf
-`
+`<br>
 3. Create a PostgreSQL user called 'catalog'
 <br>`
 sudo -u postgres createuser -P catalog
-`
+`<br>
 4. Create an empty database called 'catalog' with the owner of user 'catalog' 
 <br>`
 sudo -u postgres createdb -O catalog catalog
-`
+`<br>
 
 #### Installing Flask, SQLAlchemy, etc
 1. Install the Flask, SQLAlchemy, and any other packages used in your Catalog project
@@ -181,7 +181,7 @@ git clone https://github.com/adamdevelops/Item-Catalog---DVD-Catalog.git
 
 #### Create the catalog.wsgi file for the project
 1. Create a 'catalog.wsgi' file with in your project folder with the following (the system path will be where you stored your project, and the application secret key will be what you set it to):
-'''
+```
 import sys
 import logging
 logging.basicConfig(stream=sys.stderr)
@@ -189,7 +189,7 @@ sys.path.insert(0, "/var/www/catalog/catalog")
 
 from catalog import app as application
 application.secret_key = 'my secret key'  # This needs to be changed, used as an example
-'''
+```
 
 #### Configure Apache2 to serve the app
 1. Create a virtual host configuration file in the '\etc\apache2\sites-available' directory in order to serve the catalog app using Apache web server. Here is the content of the file:
@@ -216,16 +216,15 @@ application.secret_key = 'my secret key'  # This needs to be changed, used as an
 </VirtualHost>
 ```
 2. Disable the default virtual host with:
-
-`
+<br>`
 sudo a2dissite 000-default.conf
 `
 3. Then enable the catalog app virtual host:
-`
+<br>`
 sudo a2ensite catalog.conf
 `
 4. Restart Apache to make the configuration changes active:
-`
+<br>`
 sudo service apache reload
 `
 
