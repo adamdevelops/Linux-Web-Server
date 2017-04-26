@@ -6,7 +6,7 @@ Setup a Linux server to serve the Item-Catalog application we created earlier in
 
 ## Step by Step Walkthrough:
 
-### Get your server up and running
+### <u>Get your server up and running:</u>
 1. Create a Lightsail server instance of Ubuntu on Amazon Lightsail.
 2. Within Lightsail in the account page, download the private key and place it directory named '.ssh' (If you do not have the folder located in your "C:\Users \ username \ .ssh", then create the folder with that name)
 ```
@@ -20,7 +20,7 @@ ssh ubuntu@52.71.200.120 -i LightsailDefaultPrivateKey.pem
 
 Note: This command won’t work later when changing ssh access during the firewall configuration.
 
-### Secure your server
+### <u>Secure your server:</u>
 Now that we are SSH'd into our web server. We will need to secure it as well as install various packages to deploy our project on the server.
 
 #### Update and upgrade system packages
@@ -113,13 +113,14 @@ ssh grader@54.236.202.30 -i ~/.ssh/id_rsa -p 2200
                              private key
 ```
 5. We will now configure our server to force key based authentication to login into the server and to only listen on port 2200 for login.
-```
+<br>`
 $ sudo nano /etc/ssh/sshd_config
-
+`<br>
 Search for the line 'Password Authentication' and change 'yes' to 'no' to force key based authentication. At the beginning of this file under the text for ports we listen for, comment out 'Port 22' and type in 'Port 2200' under it to allow only port listening for port 2200.
-```
+
 #### Prepping project for deployment
 Changing timezone to UTC
+<br>
 <a href="http://stackoverflow.com/questions/22853026/ubuntu-change-timezone-to-utc-does-not-affect-the-time-of-syslog">Source</a>
 1. Type in the following command:
 `sudo dkpg-reconfigure tzdata`
