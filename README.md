@@ -231,3 +231,36 @@ sudo service apache reload
 
 Now the catalog app is active and can be access at:
 ` http://54.236.202.30 `
+
+Sources:
+Deploying a Flask app
+https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
+
+Securing remote access to database
+https://www.digitalocean.com/community/tutorials/how-to-secure-postgresql-on-an-ubuntu-vps
+
+https://www.postgresql.org/docs/9.1/static/auth-pg-hba-conf.html
+
+Changing timezone
+http://stackoverflow.com/questions/22853026/ubuntu-change-timezone-to-utc-does-not-affect-the-time-of-syslog
+
+Installing Postgres
+https://www.howtoforge.com/tutorial/ubuntu-postgresql-installation/#step-configure-postgresql-user
+
+https://tecadmin.net/install-postgresql-server-on-ubuntu/#
+
+http://hocuspokus.net/2008/05/install-postgresql-on-ubuntu-804/
+
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04
+
+Creating user in database
+https://www.postgresql.org/docs/8.0/static/sql-createuser.html
+
+http://stackoverflow.com/questions/10861260/how-to-create-user-for-a-db-in-postgresql
+
+https://www.postgresql.org/docs/8.0/static/sql-createuser.html
+
+Connecting as user in database
+http://stackoverflow.com/questions/17443379/psql-fatal-peer-authentication-failed-for-user-dev
+
+http://alvinalexander.com/blog/post/postgresql/log-in-postgresql-database
