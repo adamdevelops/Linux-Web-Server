@@ -232,9 +232,9 @@ sudo service apache reload
 Now the catalog app is active and can be access at:
 ` http://54.236.202.30 `
 
-Sources:
+## Sources:
 <br>
-<u>Deploying a Flask app:</u><br>
+<u> Deploying a Flask app: </u><br>
 https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
 
 <u>Securing remote access to database:<br>
